@@ -1,0 +1,9 @@
+{
+    "$type": "Tfl.Api.Presentation.Entities.ApiError, Tfl.Api.Presentation.Entities",
+    "timestampUtc": "2017-11-21T14:37:39.7206118Z",
+    "exceptionType": "EntityNotFoundException",
+    "httpStatusCode": 404,
+    "httpStatus": "NotFound",
+    "relativeUri": "/Road/A233",
+    "message": "The following road id is not recognised: A233"
+}

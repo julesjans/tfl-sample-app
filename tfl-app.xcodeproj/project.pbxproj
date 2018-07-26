@@ -17,6 +17,9 @@
 		848DB08C210A495D00D10A53 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB08B210A495D00D10A53 /* Secret.swift */; };
 		848DB090210A4BFE00D10A53 /* Secret.swift.example in Resources */ = {isa = PBXBuildFile; fileRef = 848DB08F210A4BFD00D10A53 /* Secret.swift.example */; };
 		848DB092210A4F2600D10A53 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 848DB091210A4F2600D10A53 /* README.md */; };
+		848DB097210A57D600D10A53 /* Road.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB096210A57D600D10A53 /* Road.swift */; };
+		848DB09A210A5BAB00D10A53 /* Success.json in Resources */ = {isa = PBXBuildFile; fileRef = 848DB099210A5BAB00D10A53 /* Success.json */; };
+		848DB09C210A6D3B00D10A53 /* Failure.json in Resources */ = {isa = PBXBuildFile; fileRef = 848DB09B210A6D3B00D10A53 /* Failure.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		848DB08B210A495D00D10A53 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		848DB08F210A4BFD00D10A53 /* Secret.swift.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Secret.swift.example; sourceTree = "<group>"; };
 		848DB091210A4F2600D10A53 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		848DB096210A57D600D10A53 /* Road.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Road.swift; sourceTree = "<group>"; };
+		848DB099210A5BAB00D10A53 /* Success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Success.json; sourceTree = "<group>"; };
+		848DB09B210A6D3B00D10A53 /* Failure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Failure.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,7 @@
 		848DB070210A487D00D10A53 /* tfl-appTests */ = {
 			isa = PBXGroup;
 			children = (
+				848DB098210A5B7B00D10A53 /* Test Data */,
 				848DB071210A487D00D10A53 /* tfl_appTests.swift */,
 				848DB073210A487D00D10A53 /* Info.plist */,
 			);
@@ -154,6 +161,7 @@
 		848DB094210A514700D10A53 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				848DB096210A57D600D10A53 /* Road.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,6 +172,15 @@
 				848DB05E210A487C00D10A53 /* ViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		848DB098210A5B7B00D10A53 /* Test Data */ = {
+			isa = PBXGroup;
+			children = (
+				848DB099210A5BAB00D10A53 /* Success.json */,
+				848DB09B210A6D3B00D10A53 /* Failure.json */,
+			);
+			path = "Test Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +299,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848DB09C210A6D3B00D10A53 /* Failure.json in Resources */,
+				848DB09A210A5BAB00D10A53 /* Success.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +321,7 @@
 				848DB05F210A487C00D10A53 /* ViewController.swift in Sources */,
 				848DB08C210A495D00D10A53 /* Secret.swift in Sources */,
 				848DB05D210A487C00D10A53 /* AppDelegate.swift in Sources */,
+				848DB097210A57D600D10A53 /* Road.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
