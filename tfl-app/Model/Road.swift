@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-class Road {
+class Road: APIAccessible {
     
     var id: String
     var displayName: String

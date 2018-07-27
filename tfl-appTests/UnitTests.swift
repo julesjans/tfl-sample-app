@@ -10,40 +10,89 @@ import XCTest
 import CoreLocation
 @testable import tfl_app
 
-class UnitTests: XCTestCase {
+
+class APIClientMockSuccess: APIClient {
     
-    var rawSuccessData: [[String: Any]]!
-    //    var rawFailureData: [String: Any]!
-    
-    override func setUp() {
-        super.setUp()
-        
+    func get<T>(urlString: String, completion: @escaping (Bool, Array<T>?, APIError?) -> Void) where T : APIAccessible {
         let bundle = Bundle(for: type(of: self))
-        
         let successURL = bundle.url(forResource: "Success", withExtension: "json")!
         let successData = try! Data(contentsOf: successURL)
         let successJSON = try! JSONSerialization.jsonObject(with: successData, options: .allowFragments)
-        rawSuccessData = successJSON as! [[String: Any]]
-    
-        //        let failureURL = bundle.url(forResource: "Failure", withExtension: "json")!
-        //        let failureData = try! Data(contentsOf: failureURL)
-        //        let failureJSON = try! JSONSerialization.jsonObject(with: failureData, options: .allowFragments)
-        //        rawFailureData = failureJSON as! [String: Any]
+        let rawSuccessData = successJSON as! [[String: Any]]
+        completion(true, rawSuccessData.map({T(dict: $0)}).compactMap {$0}, nil)
     }
     
-    func testRoadFromRawJSON() {
-        
-        let road = Road(dict: rawSuccessData.first!)
-        
-        XCTAssert(road!.id == "a2")
-        XCTAssert(road!.displayName == "A2")
-        XCTAssert(road!.statusSeverity == "Good")
-        XCTAssert(road!.statusSeverityDescription == "No Exceptional Delays")
-        XCTAssert(road!.bounds!.nw.latitude == CLLocationCoordinate2D(latitude:51.49438, longitude: -0.0857).latitude)
-        XCTAssert(road!.bounds!.nw.longitude == CLLocationCoordinate2D(latitude:51.49438, longitude: -0.0857).longitude)
-        XCTAssert(road!.bounds!.se.latitude == CLLocationCoordinate2D(latitude: 51.44091, longitude: 0.17118).latitude)
-        XCTAssert(road!.bounds!.se.longitude == CLLocationCoordinate2D(latitude: 51.44091, longitude: 0.17118).longitude)
-        
+}
+
+class APIClientMockInvalid: APIClient {
+    
+    func get<T>(urlString: String, completion: @escaping (Bool, Array<T>?, APIError?) -> Void) where T : APIAccessible {
+        let bundle = Bundle(for: type(of: self))
+        let failureURL = bundle.url(forResource: "Failure", withExtension: "json")!
+        let failureData = try! Data(contentsOf: failureURL)
+        let failureJSON = try! JSONSerialization.jsonObject(with: failureData, options: .allowFragments)
+        let rawFailureData = failureJSON as! [String: Any]
+        completion(false, nil, APIError(statusCode: 404, statusMessage: (rawFailureData["message"] as! String)))
+    }
+    
+}
+
+class UnitTests: XCTestCase {
+    
+    func testRoadFromMockAPI() {
+        let promise = expectation(description: "testRoadFromMockAPI")
+        Road.get(id: "a2", api: APIClientMockSuccess()) { (success, roads, error) in
+            let road = roads!.first!
+            XCTAssert(road.id == "a2")
+            XCTAssert(road.displayName == "A2")
+            XCTAssert(road.statusSeverity == "Good")
+            XCTAssert(road.statusSeverityDescription == "No Exceptional Delays")
+            XCTAssert(road.bounds!.nw.latitude == CLLocationCoordinate2D(latitude:51.49438, longitude: -0.0857).latitude)
+            XCTAssert(road.bounds!.nw.longitude == CLLocationCoordinate2D(latitude:51.49438, longitude: -0.0857).longitude)
+            XCTAssert(road.bounds!.se.latitude == CLLocationCoordinate2D(latitude: 51.44091, longitude: 0.17118).latitude)
+            XCTAssert(road.bounds!.se.longitude == CLLocationCoordinate2D(latitude: 51.44091, longitude: 0.17118).longitude)
+            promise.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testInvalidRoadFromMockAPI() {
+        let promise = expectation(description: "testRoadFromMockAPI")
+        Road.get(id: "A233", api: APIClientMockInvalid()) { (success, roads, error) in
+            XCTAssert(success == false)
+            XCTAssert(roads == nil)
+            XCTAssert(error!.statusCode == 404)
+            XCTAssert(error!.statusMessage == "The following road id is not recognised: A233")
+            promise.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testRoadFromLiveAPI() {
+        let promise = expectation(description: "testRoadFromLiveAPI")
+        Road.get(id: "a2", api: APIClientLive()) { (success, roads, error) in
+            let road = roads!.first!
+            XCTAssert(road.id == "a2")
+            XCTAssert(road.displayName == "A2")
+            XCTAssert(road.bounds!.nw.latitude == CLLocationCoordinate2D(latitude:51.49438, longitude: -0.0857).latitude)
+            XCTAssert(road.bounds!.nw.longitude == CLLocationCoordinate2D(latitude:51.49438, longitude: -0.0857).longitude)
+            XCTAssert(road.bounds!.se.latitude == CLLocationCoordinate2D(latitude: 51.44091, longitude: 0.17118).latitude)
+            XCTAssert(road.bounds!.se.longitude == CLLocationCoordinate2D(latitude: 51.44091, longitude: 0.17118).longitude)
+            promise.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testInvalidRoadFromLiveAPI() {
+        let promise = expectation(description: "testRoadFromLiveAPI")
+        Road.get(id: "A233", api: APIClientLive()) { (success, roads, error) in
+            XCTAssert(success == false)
+            XCTAssert(roads == nil)
+            XCTAssert(error!.statusCode == 404)
+            XCTAssert(!error!.statusMessage!.isEmpty)
+            promise.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
     }
     
 }

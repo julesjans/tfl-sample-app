@@ -20,6 +20,8 @@
 		848DB09A210A5BAB00D10A53 /* Success.json in Resources */ = {isa = PBXBuildFile; fileRef = 848DB099210A5BAB00D10A53 /* Success.json */; };
 		848DB09C210A6D3B00D10A53 /* Failure.json in Resources */ = {isa = PBXBuildFile; fileRef = 848DB09B210A6D3B00D10A53 /* Failure.json */; };
 		84BD79F9210AF2DE00BC8D1E /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB07C210A487D00D10A53 /* UITests.swift */; };
+		84BD79FB210B7A1600BC8D1E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD79FA210B7A1600BC8D1E /* APIClient.swift */; };
+		84BD79FC210B7C8000BC8D1E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD79FA210B7A1600BC8D1E /* APIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,7 @@
 		848DB09B210A6D3B00D10A53 /* Failure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Failure.json; sourceTree = "<group>"; };
 		84BD79EF210AF2CF00BC8D1E /* tfl-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tfl-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BD79F3210AF2CF00BC8D1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84BD79FA210B7A1600BC8D1E /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,9 +114,9 @@
 			isa = PBXGroup;
 			children = (
 				848DB08A210A492300D10A53 /* Supporting Files */,
-				848DB095210A514C00D10A53 /* Controller */,
 				848DB094210A514700D10A53 /* Model */,
 				848DB093210A514200D10A53 /* View */,
+				848DB095210A514C00D10A53 /* Controller */,
 			);
 			path = "tfl-app";
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 		848DB094210A514700D10A53 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84BD79FA210B7A1600BC8D1E /* APIClient.swift */,
 				848DB096210A57D600D10A53 /* Road.swift */,
 			);
 			path = Model;
@@ -321,6 +325,7 @@
 				848DB05F210A487C00D10A53 /* ViewController.swift in Sources */,
 				848DB08C210A495D00D10A53 /* Secret.swift in Sources */,
 				848DB05D210A487C00D10A53 /* AppDelegate.swift in Sources */,
+				84BD79FB210B7A1600BC8D1E /* APIClient.swift in Sources */,
 				848DB097210A57D600D10A53 /* Road.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BD79F9210AF2DE00BC8D1E /* UITests.swift in Sources */,
+				84BD79FC210B7C8000BC8D1E /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

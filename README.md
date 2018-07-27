@@ -21,7 +21,7 @@ enum APICredentials {
 
 There are two test targets, both of which can be run through the standard test menu functions in Xcode.
 
-1. Unit Tests - standard unit tests for the model and the API.
+1. Unit Tests - standard unit tests for the model and the API. Tests both a mock API and the live API using depency injection.
 
 2. UI Tests - BDD style user story tests.
 
