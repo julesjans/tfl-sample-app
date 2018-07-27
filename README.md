@@ -16,6 +16,17 @@ enum APICredentials {
     static let key = "Your API Key here"
 }
 ```
+
+##  Testing ##
+
+There are two test targets, both of which can be run through the standard test menu functions in Xcode.
+
+1. Unit Tests - standard unit tests for the model and the API.
+
+2. UI Tests - BDD style user story tests.
+
+
+
 ##  API Anomalies ##
 
 ### Coordinates ###

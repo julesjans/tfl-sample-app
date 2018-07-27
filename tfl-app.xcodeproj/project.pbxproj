@@ -12,14 +12,14 @@
 		848DB062210A487C00D10A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848DB060210A487C00D10A53 /* Main.storyboard */; };
 		848DB064210A487D00D10A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848DB063210A487D00D10A53 /* Assets.xcassets */; };
 		848DB067210A487D00D10A53 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848DB065210A487D00D10A53 /* LaunchScreen.storyboard */; };
-		848DB072210A487D00D10A53 /* tfl_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB071210A487D00D10A53 /* tfl_appTests.swift */; };
-		848DB07D210A487D00D10A53 /* tfl_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB07C210A487D00D10A53 /* tfl_appUITests.swift */; };
+		848DB072210A487D00D10A53 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB071210A487D00D10A53 /* UnitTests.swift */; };
 		848DB08C210A495D00D10A53 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB08B210A495D00D10A53 /* Secret.swift */; };
 		848DB090210A4BFE00D10A53 /* Secret.swift.example in Resources */ = {isa = PBXBuildFile; fileRef = 848DB08F210A4BFD00D10A53 /* Secret.swift.example */; };
 		848DB092210A4F2600D10A53 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 848DB091210A4F2600D10A53 /* README.md */; };
 		848DB097210A57D600D10A53 /* Road.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB096210A57D600D10A53 /* Road.swift */; };
 		848DB09A210A5BAB00D10A53 /* Success.json in Resources */ = {isa = PBXBuildFile; fileRef = 848DB099210A5BAB00D10A53 /* Success.json */; };
 		848DB09C210A6D3B00D10A53 /* Failure.json in Resources */ = {isa = PBXBuildFile; fileRef = 848DB09B210A6D3B00D10A53 /* Failure.json */; };
+		84BD79F9210AF2DE00BC8D1E /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB07C210A487D00D10A53 /* UITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +30,7 @@
 			remoteGlobalIDString = 848DB058210A487C00D10A53;
 			remoteInfo = "tfl-app";
 		};
-		848DB079210A487D00D10A53 /* PBXContainerItemProxy */ = {
+		84BD79F4210AF2CF00BC8D1E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 848DB051210A487C00D10A53 /* Project object */;
 			proxyType = 1;
@@ -48,17 +48,17 @@
 		848DB066210A487D00D10A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		848DB068210A487D00D10A53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848DB06D210A487D00D10A53 /* tfl-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tfl-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		848DB071210A487D00D10A53 /* tfl_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tfl_appTests.swift; sourceTree = "<group>"; };
+		848DB071210A487D00D10A53 /* UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
 		848DB073210A487D00D10A53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		848DB078210A487D00D10A53 /* tfl-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tfl-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		848DB07C210A487D00D10A53 /* tfl_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tfl_appUITests.swift; sourceTree = "<group>"; };
-		848DB07E210A487D00D10A53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		848DB07C210A487D00D10A53 /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
 		848DB08B210A495D00D10A53 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		848DB08F210A4BFD00D10A53 /* Secret.swift.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Secret.swift.example; sourceTree = "<group>"; };
 		848DB091210A4F2600D10A53 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		848DB096210A57D600D10A53 /* Road.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Road.swift; sourceTree = "<group>"; };
 		848DB099210A5BAB00D10A53 /* Success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Success.json; sourceTree = "<group>"; };
 		848DB09B210A6D3B00D10A53 /* Failure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Failure.json; sourceTree = "<group>"; };
+		84BD79EF210AF2CF00BC8D1E /* tfl-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tfl-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84BD79F3210AF2CF00BC8D1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		848DB075210A487D00D10A53 /* Frameworks */ = {
+		84BD79EC210AF2CF00BC8D1E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -92,7 +92,7 @@
 				848DB091210A4F2600D10A53 /* README.md */,
 				848DB05B210A487C00D10A53 /* tfl-app */,
 				848DB070210A487D00D10A53 /* tfl-appTests */,
-				848DB07B210A487D00D10A53 /* tfl-appUITests */,
+				84BD79F0210AF2CF00BC8D1E /* tfl-appUITests */,
 				848DB05A210A487C00D10A53 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,7 +102,7 @@
 			children = (
 				848DB059210A487C00D10A53 /* tfl-app.app */,
 				848DB06D210A487D00D10A53 /* tfl-appTests.xctest */,
-				848DB078210A487D00D10A53 /* tfl-appUITests.xctest */,
+				84BD79EF210AF2CF00BC8D1E /* tfl-appUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,19 +122,10 @@
 			isa = PBXGroup;
 			children = (
 				848DB098210A5B7B00D10A53 /* Test Data */,
-				848DB071210A487D00D10A53 /* tfl_appTests.swift */,
+				848DB071210A487D00D10A53 /* UnitTests.swift */,
 				848DB073210A487D00D10A53 /* Info.plist */,
 			);
 			path = "tfl-appTests";
-			sourceTree = "<group>";
-		};
-		848DB07B210A487D00D10A53 /* tfl-appUITests */ = {
-			isa = PBXGroup;
-			children = (
-				848DB07C210A487D00D10A53 /* tfl_appUITests.swift */,
-				848DB07E210A487D00D10A53 /* Info.plist */,
-			);
-			path = "tfl-appUITests";
 			sourceTree = "<group>";
 		};
 		848DB08A210A492300D10A53 /* Supporting Files */ = {
@@ -183,6 +174,15 @@
 			path = "Test Data";
 			sourceTree = "<group>";
 		};
+		84BD79F0210AF2CF00BC8D1E /* tfl-appUITests */ = {
+			isa = PBXGroup;
+			children = (
+				848DB07C210A487D00D10A53 /* UITests.swift */,
+				84BD79F3210AF2CF00BC8D1E /* Info.plist */,
+			);
+			path = "tfl-appUITests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -221,22 +221,22 @@
 			productReference = 848DB06D210A487D00D10A53 /* tfl-appTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		848DB077210A487D00D10A53 /* tfl-appUITests */ = {
+		84BD79EE210AF2CF00BC8D1E /* tfl-appUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 848DB087210A487D00D10A53 /* Build configuration list for PBXNativeTarget "tfl-appUITests" */;
+			buildConfigurationList = 84BD79F6210AF2CF00BC8D1E /* Build configuration list for PBXNativeTarget "tfl-appUITests" */;
 			buildPhases = (
-				848DB074210A487D00D10A53 /* Sources */,
-				848DB075210A487D00D10A53 /* Frameworks */,
-				848DB076210A487D00D10A53 /* Resources */,
+				84BD79EB210AF2CF00BC8D1E /* Sources */,
+				84BD79EC210AF2CF00BC8D1E /* Frameworks */,
+				84BD79ED210AF2CF00BC8D1E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				848DB07A210A487D00D10A53 /* PBXTargetDependency */,
+				84BD79F5210AF2CF00BC8D1E /* PBXTargetDependency */,
 			);
 			name = "tfl-appUITests";
 			productName = "tfl-appUITests";
-			productReference = 848DB078210A487D00D10A53 /* tfl-appUITests.xctest */;
+			productReference = 84BD79EF210AF2CF00BC8D1E /* tfl-appUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -256,7 +256,7 @@
 						CreatedOnToolsVersion = 9.4.1;
 						TestTargetID = 848DB058210A487C00D10A53;
 					};
-					848DB077210A487D00D10A53 = {
+					84BD79EE210AF2CF00BC8D1E = {
 						CreatedOnToolsVersion = 9.4.1;
 						TestTargetID = 848DB058210A487C00D10A53;
 					};
@@ -277,7 +277,7 @@
 			targets = (
 				848DB058210A487C00D10A53 /* tfl-app */,
 				848DB06C210A487D00D10A53 /* tfl-appTests */,
-				848DB077210A487D00D10A53 /* tfl-appUITests */,
+				84BD79EE210AF2CF00BC8D1E /* tfl-appUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -304,7 +304,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		848DB076210A487D00D10A53 /* Resources */ = {
+		84BD79ED210AF2CF00BC8D1E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -329,15 +329,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				848DB072210A487D00D10A53 /* tfl_appTests.swift in Sources */,
+				848DB072210A487D00D10A53 /* UnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		848DB074210A487D00D10A53 /* Sources */ = {
+		84BD79EB210AF2CF00BC8D1E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				848DB07D210A487D00D10A53 /* tfl_appUITests.swift in Sources */,
+				84BD79F9210AF2DE00BC8D1E /* UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,10 +349,10 @@
 			target = 848DB058210A487C00D10A53 /* tfl-app */;
 			targetProxy = 848DB06E210A487D00D10A53 /* PBXContainerItemProxy */;
 		};
-		848DB07A210A487D00D10A53 /* PBXTargetDependency */ = {
+		84BD79F5210AF2CF00BC8D1E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 848DB058210A487C00D10A53 /* tfl-app */;
-			targetProxy = 848DB079210A487D00D10A53 /* PBXContainerItemProxy */;
+			targetProxy = 84BD79F4210AF2CF00BC8D1E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -568,10 +568,9 @@
 			};
 			name = Release;
 		};
-		848DB088210A487D00D10A53 /* Debug */ = {
+		84BD79F7210AF2CF00BC8D1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 432M5K2J3X;
 				INFOPLIST_FILE = "tfl-appUITests/Info.plist";
@@ -588,10 +587,9 @@
 			};
 			name = Debug;
 		};
-		848DB089210A487D00D10A53 /* Release */ = {
+		84BD79F8210AF2CF00BC8D1E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 432M5K2J3X;
 				INFOPLIST_FILE = "tfl-appUITests/Info.plist";
@@ -638,11 +636,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		848DB087210A487D00D10A53 /* Build configuration list for PBXNativeTarget "tfl-appUITests" */ = {
+		84BD79F6210AF2CF00BC8D1E /* Build configuration list for PBXNativeTarget "tfl-appUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				848DB088210A487D00D10A53 /* Debug */,
-				848DB089210A487D00D10A53 /* Release */,
+				84BD79F7210AF2CF00BC8D1E /* Debug */,
+				84BD79F8210AF2CF00BC8D1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

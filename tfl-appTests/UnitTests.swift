@@ -1,5 +1,5 @@
 //
-//  tfl_appTests.swift
+//  UnitTests.swift
 //  tfl-appTests
 //
 //  Created by Julian Jans on 26/07/2018.
@@ -10,10 +10,10 @@ import XCTest
 import CoreLocation
 @testable import tfl_app
 
-class tfl_appTests: XCTestCase {
+class UnitTests: XCTestCase {
     
     var rawSuccessData: [[String: Any]]!
-//    var rawFailureData: [String: Any]!
+    //    var rawFailureData: [String: Any]!
     
     override func setUp() {
         super.setUp()
@@ -25,10 +25,10 @@ class tfl_appTests: XCTestCase {
         let successJSON = try! JSONSerialization.jsonObject(with: successData, options: .allowFragments)
         rawSuccessData = successJSON as! [[String: Any]]
     
-//        let failureURL = bundle.url(forResource: "Failure", withExtension: "json")!
-//        let failureData = try! Data(contentsOf: failureURL)
-//        let failureJSON = try! JSONSerialization.jsonObject(with: failureData, options: .allowFragments)
-//        rawFailureData = failureJSON as! [String: Any]
+        //        let failureURL = bundle.url(forResource: "Failure", withExtension: "json")!
+        //        let failureData = try! Data(contentsOf: failureURL)
+        //        let failureJSON = try! JSONSerialization.jsonObject(with: failureData, options: .allowFragments)
+        //        rawFailureData = failureJSON as! [String: Any]
     }
     
     func testRoadFromRawJSON() {
