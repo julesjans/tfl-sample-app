@@ -82,7 +82,7 @@ final class APIClientLive: APIClient {
             }
             
             guard let response = response as? HTTPURLResponse else {
-                completion(false, nil, APIError(statusCode: nil, statusMessage: "Response error"))
+                completion(false, nil, APIError(statusCode: nil, statusMessage: "No valid response"))
                 return
             }
             
@@ -94,7 +94,7 @@ final class APIClientLive: APIClient {
                     completion(false, nil, APIError(statusCode: response.statusCode, statusMessage: message))
                 }
                 catch {
-                    completion(false, nil, APIError(statusCode: response.statusCode, statusMessage: "Unable to parse error message"))
+                    completion(false, nil, APIError(statusCode: response.statusCode, statusMessage: "Unable to process that request"))
                 }
                 return
             }
@@ -105,7 +105,7 @@ final class APIClientLive: APIClient {
                 completion(true, array.map({T(dict: $0)}).compactMap {$0}, nil)
             }
             catch {
-                completion(false, nil, APIError(statusCode: response.statusCode, statusMessage: "Unable to parse JSON response"))
+                completion(false, nil, APIError(statusCode: response.statusCode, statusMessage: "Unable to process that request"))
             }
         }
         task.resume()
