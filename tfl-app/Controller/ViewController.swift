@@ -26,6 +26,16 @@ class ViewController: UIViewController {
         }
     }
     
+    // Initializer for the APIClient, uses the mock API for testing environments.
+    // In a larger project this would be shared across the app, and not coupled to a view controller like this.
+    lazy var apiClient: APIClient = {
+        if ProcessInfo.processInfo.arguments.contains("APIClientMock") {
+            return APIClientMock()
+        } else {
+            return APIClientLive()
+        }
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -108,7 +118,7 @@ extension ViewController: UITextFieldDelegate {
         
         activityIndicator.startAnimating()
         
-        Road.get(id: text, api: APIClientLive()) { (success, roads, error) in
+        Road.get(id: text, api: apiClient) { (success, roads, error) in
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
                 self.selectedRoad = roads?.first

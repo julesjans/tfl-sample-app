@@ -11,37 +11,11 @@ import CoreLocation
 @testable import tfl_app
 
 
-class APIClientMockSuccess: APIClient {
-    
-    func get<T>(urlString: String, completion: @escaping (Bool, Array<T>?, APIError?) -> Void) where T : APIAccessible {
-        let bundle = Bundle(for: type(of: self))
-        let successURL = bundle.url(forResource: "Success", withExtension: "json")!
-        let successData = try! Data(contentsOf: successURL)
-        let successJSON = try! JSONSerialization.jsonObject(with: successData, options: .allowFragments)
-        let rawSuccessData = successJSON as! [[String: Any]]
-        completion(true, rawSuccessData.map({T(dict: $0)}).compactMap {$0}, nil)
-    }
-    
-}
-
-class APIClientMockInvalid: APIClient {
-    
-    func get<T>(urlString: String, completion: @escaping (Bool, Array<T>?, APIError?) -> Void) where T : APIAccessible {
-        let bundle = Bundle(for: type(of: self))
-        let failureURL = bundle.url(forResource: "Failure", withExtension: "json")!
-        let failureData = try! Data(contentsOf: failureURL)
-        let failureJSON = try! JSONSerialization.jsonObject(with: failureData, options: .allowFragments)
-        let rawFailureData = failureJSON as! [String: Any]
-        completion(false, nil, APIError(statusCode: 404, statusMessage: (rawFailureData["message"] as! String)))
-    }
-    
-}
-
 class UnitTests: XCTestCase {
     
     func testRoadFromMockAPI() {
         let promise = expectation(description: "testRoadFromMockAPI")
-        Road.get(id: "a2", api: APIClientMockSuccess()) { (success, roads, error) in
+        Road.get(id: "a2", api: APIClientMock()) { (success, roads, error) in
             let road = roads!.first!
             XCTAssert(road.id == "a2")
             XCTAssert(road.displayName == "A2")
@@ -58,7 +32,7 @@ class UnitTests: XCTestCase {
     
     func testInvalidRoadFromMockAPI() {
         let promise = expectation(description: "testRoadFromMockAPI")
-        Road.get(id: "A233", api: APIClientMockInvalid()) { (success, roads, error) in
+        Road.get(id: "A233", api: APIClientMock()) { (success, roads, error) in
             XCTAssert(success == false)
             XCTAssert(roads == nil)
             XCTAssert(error!.statusCode == 404)

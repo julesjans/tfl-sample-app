@@ -112,3 +112,27 @@ final class APIClientLive: APIClient {
     }
     
 }
+
+// MARK: - Mock API, for use in tests
+
+final class APIClientMock: APIClient {
+    
+    func get<T>(urlString: String, completion: @escaping (Bool, Array<T>?, APIError?) -> Void) where T : APIAccessible {
+        let bundle = Bundle.main
+        
+        let urlComponents = URLComponents(string: urlString)
+        
+        let url = bundle.url(forResource: (urlComponents?.path == "Road/a2" ? "Success" : "Failure"), withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
+        
+        if urlComponents?.path == "Road/a2" {
+            let rawSuccessData = json as! [[String: Any]]
+            completion(true, rawSuccessData.map({T(dict: $0)}).compactMap {$0}, nil)
+        } else {
+            let rawFailureData = json as! [String: Any]
+            completion(false, nil, APIError(statusCode: 404, statusMessage: (rawFailureData["message"] as! String)))
+        }
+    }
+    
+}
