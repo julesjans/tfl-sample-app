@@ -15,7 +15,7 @@ class UnitTests: XCTestCase {
     
     func testRoadFromMockAPI() {
         let promise = expectation(description: "testRoadFromMockAPI")
-        Road.get(id: "a2", api: APIClientMock()) { (success, roads, error) in
+        Road.get(id: "a2", api: APIClientMock()) { (roads, error) in
             let road = roads!.first!
             XCTAssert(road.id == "a2")
             XCTAssert(road.displayName == "A2")
@@ -32,8 +32,7 @@ class UnitTests: XCTestCase {
     
     func testInvalidRoadFromMockAPI() {
         let promise = expectation(description: "testRoadFromMockAPI")
-        Road.get(id: "A233", api: APIClientMock()) { (success, roads, error) in
-            XCTAssert(success == false)
+        Road.get(id: "A233", api: APIClientMock()) { (roads, error) in
             XCTAssert(roads == nil)
             XCTAssert(error!.statusCode == 404)
             XCTAssert(error!.statusMessage == "The following road id is not recognised: A233")
@@ -44,7 +43,7 @@ class UnitTests: XCTestCase {
     
     func testRoadFromLiveAPI() {
         let promise = expectation(description: "testRoadFromLiveAPI")
-        Road.get(id: "a2", api: APIClientLive()) { (success, roads, error) in
+        Road.get(id: "a2", api: APIClientLive()) { (roads, error) in
             let road = roads!.first!
             XCTAssert(road.id == "a2")
             XCTAssert(road.displayName == "A2")
@@ -59,8 +58,7 @@ class UnitTests: XCTestCase {
     
     func testInvalidRoadFromLiveAPI() {
         let promise = expectation(description: "testRoadFromLiveAPI")
-        Road.get(id: "A233", api: APIClientLive()) { (success, roads, error) in
-            XCTAssert(success == false)
+        Road.get(id: "A233", api: APIClientLive()) { (roads, error) in
             XCTAssert(roads == nil)
             XCTAssert(error!.statusCode == 404)
             XCTAssert(!error!.statusMessage!.isEmpty)

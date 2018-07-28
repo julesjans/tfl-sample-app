@@ -11,6 +11,16 @@ import MapKit
 
 class ViewController: UIViewController {
     
+    // Initializer for the APIClient, uses the mock API for testing environments.
+    // In a larger project this would be shared across the app, and not coupled to a view controller like this.
+    lazy var apiClient: APIClient = {
+        if ProcessInfo.processInfo.arguments.contains("APIClientMock") {
+            return APIClientMock()
+        } else {
+            return APIClientLive()
+        }
+    }()
+    
     @IBOutlet var textField: UITextField!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var mapView: MKMapView!
@@ -26,22 +36,13 @@ class ViewController: UIViewController {
         }
     }
     
-    // Initializer for the APIClient, uses the mock API for testing environments.
-    // In a larger project this would be shared across the app, and not coupled to a view controller like this.
-    lazy var apiClient: APIClient = {
-        if ProcessInfo.processInfo.arguments.contains("APIClientMock") {
-            return APIClientMock()
-        } else {
-            return APIClientLive()
-        }
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         scrollView.keyboardDismissMode = .onDrag
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshData), name: .UIApplicationDidBecomeActive, object: nil)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -66,11 +67,14 @@ extension ViewController {
         
         var infoColour: UIColor?
         
+        // Potential values taken from: https://api.tfl.gov.uk/Road/Meta/Severities
         switch self.selectedRoad?.statusSeverity {
-        case "Good":
+        case "Good", "No Issues", "Minimal", "No Exeptional Delays":
             infoColour = UIColor.corporateGreen()
-        case "Closure":
+        case "Closure", "Severe", "Serious":
             infoColour = UIColor.corporateRed()
+        case "Moderate":
+            infoColour = UIColor.corporateYellow()
         default:
             infoColour = UIColor.corporateBlue()
         }
@@ -91,7 +95,7 @@ extension ViewController {
     
 }
 
-// MARK: Search text and API request
+// MARK: UITextFieldDelegate
 extension ViewController: UITextFieldDelegate {
     
     @objc func keyboardDidShow(notification: Notification) {
@@ -109,27 +113,40 @@ extension ViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-       
         textField.resignFirstResponder()
-        
         guard let text = textField.text, !text.isEmpty else {
             return true
         }
-        
+        getData(query: text)
+        return true
+    }
+    
+}
+
+// MARK: Fetching data
+extension ViewController {
+    
+    func getData(query: String) {
         activityIndicator.startAnimating()
-        
-        Road.get(id: text, api: apiClient) { (success, roads, error) in
+        textField.isUserInteractionEnabled = false
+        Road.get(id: query, api: apiClient) { (roads, error) in
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
+                self.textField.isUserInteractionEnabled = true
                 self.selectedRoad = roads?.first
                 if let error = error {
-                    let alert = UIAlertController(title: "Sorry", message: error.statusMessage, preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    let alert = UIAlertController(title: NSLocalizedString("Sorry", comment: "Warning message"), message: error.statusMessage, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Warning acceptance"), style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
         }
-        return true
+    }
+    
+    @objc func refreshData() {
+        if let road = selectedRoad {
+            getData(query: road.id)
+        }
     }
     
 }

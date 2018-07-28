@@ -25,12 +25,10 @@ extension APIAccessible {
      - parameter api: The APIClient to use.
      - parameter completion: Completion block with success status, array of APIAccessibles, or APIError.
      */
-    static func get(id: String, api: APIClient, completion: @escaping (Bool, Array<Self>?, APIError?) -> Void) {
-        guard let param = id.lowercased().addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
-            assertionFailure()
-            return
-        }
-        api.get(urlString: "\(String(describing: Self.self).capitalized)/\(param)", completion: completion)
+    static func get(id: String?, api: APIClient, completion: @escaping (Array<Self>?, APIError?) -> Void) {
+        var urlString = String(describing: Self.self).lowercased()
+        if let idString = id {urlString.append("/\(idString.lowercased())")}
+        api.get(urlString: urlString, completion: completion)
     }
     
 }
@@ -47,7 +45,7 @@ protocol APIClient {
      - parameter urlString: Specific url for resource.
      - parameter completion: Completion block with success status, array of APIAccessibles, or APIError
      */
-    func get<T:APIAccessible>(urlString: String, completion: @escaping (Bool, Array<T>?, APIError?) -> Void)
+    func get<T:APIAccessible>(urlString: String, completion: @escaping (Array<T>?, APIError?) -> Void)
 }
 
 struct APIError: Error {
@@ -61,7 +59,7 @@ struct APIError: Error {
 
 final class APIClientLive: APIClient {
 
-    func get<T:APIAccessible>(urlString: String, completion: @escaping (Bool, Array<T>?, APIError?) -> Void) {
+    func get<T:APIAccessible>(urlString: String, completion: @escaping (Array<T>?, APIError?) -> Void) {
         
         var query = URLComponents(string: "https://api.tfl.gov.uk")
         query?.path = "/\(urlString)"
@@ -77,12 +75,12 @@ final class APIClientLive: APIClient {
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { (data, response, error) in
             
             guard error == nil else {
-                completion(false, nil, APIError(statusCode: nil, statusMessage: error!.localizedDescription))
+                completion(nil, APIError(statusCode: nil, statusMessage: error!.localizedDescription))
                 return
             }
             
             guard let response = response as? HTTPURLResponse else {
-                completion(false, nil, APIError(statusCode: nil, statusMessage: "No valid response"))
+                completion(nil, APIError(statusCode: nil, statusMessage: "No valid response"))
                 return
             }
             
@@ -91,10 +89,10 @@ final class APIClientLive: APIClient {
                     let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
                     let dictionary = json as! [String: Any]
                     let message = dictionary["message"] as! String
-                    completion(false, nil, APIError(statusCode: response.statusCode, statusMessage: message))
+                    completion(nil, APIError(statusCode: response.statusCode, statusMessage: message))
                 }
                 catch {
-                    completion(false, nil, APIError(statusCode: response.statusCode, statusMessage: "Unable to process that request"))
+                    completion(nil, APIError(statusCode: response.statusCode, statusMessage: "Unable to process that request"))
                 }
                 return
             }
@@ -102,10 +100,10 @@ final class APIClientLive: APIClient {
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
                 let array = json as! [[String: Any]]
-                completion(true, array.map({T(dict: $0)}).compactMap {$0}, nil)
+                completion(array.map({T(dict: $0)}).compactMap {$0}, nil)
             }
             catch {
-                completion(false, nil, APIError(statusCode: response.statusCode, statusMessage: "Unable to process that request"))
+                completion(nil, APIError(statusCode: response.statusCode, statusMessage: "Unable to process that request"))
             }
         }
         task.resume()
@@ -117,21 +115,21 @@ final class APIClientLive: APIClient {
 
 final class APIClientMock: APIClient {
     
-    func get<T>(urlString: String, completion: @escaping (Bool, Array<T>?, APIError?) -> Void) where T : APIAccessible {
+    func get<T>(urlString: String, completion: @escaping (Array<T>?, APIError?) -> Void) where T : APIAccessible {
         let bundle = Bundle.main
         
         let urlComponents = URLComponents(string: urlString)
         
-        let url = bundle.url(forResource: (urlComponents?.path == "Road/a2" ? "Success" : "Failure"), withExtension: "json")!
+        let url = bundle.url(forResource: (urlComponents?.path == "road/a2" ? "Success" : "Failure"), withExtension: "json")!
         let data = try! Data(contentsOf: url)
         let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
         
-        if urlComponents?.path == "Road/a2" {
+        if urlComponents?.path == "road/a2" {
             let rawSuccessData = json as! [[String: Any]]
-            completion(true, rawSuccessData.map({T(dict: $0)}).compactMap {$0}, nil)
+            completion(rawSuccessData.map({T(dict: $0)}).compactMap {$0}, nil)
         } else {
             let rawFailureData = json as! [String: Any]
-            completion(false, nil, APIError(statusCode: 404, statusMessage: (rawFailureData["message"] as! String)))
+            completion(nil, APIError(statusCode: 404, statusMessage: (rawFailureData["message"] as! String)))
         }
     }
     
