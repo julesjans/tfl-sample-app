@@ -25,28 +25,24 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wO6-tM-RCk">
-                                                <rect key="frame" x="0.0" y="397" width="375" height="250"/>
+                                                <rect key="frame" x="0.0" y="387" width="375" height="260"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="XKm-bw-vd2">
-                                                        <rect key="frame" x="24" y="24" width="327" height="202"/>
+                                                        <rect key="frame" x="24" y="24" width="327" height="212"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WYR-Xq-6VQ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="327" height="29"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="TFL Coding Challenge" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Emy-zG-91T">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="307" height="29"/>
-                                                                        <accessibility key="accessibilityConfiguration" identifier="Road Label"/>
-                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="LrP-MK-VYe">
-                                                                        <rect key="frame" x="307" y="4.5" width="20" height="20"/>
-                                                                    </activityIndicatorView>
-                                                                </subviews>
-                                                            </stackView>
+                                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1s-lg-9DZ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="327" height="90"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="Road Picker"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="90" id="Nqr-g3-W8M"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="fEk-P9-6ya" id="4Up-WH-nvi"/>
+                                                                    <outlet property="delegate" destination="fEk-P9-6ya" id="v7D-om-Jf1"/>
+                                                                </connections>
+                                                            </pickerView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="a1p-PO-8KR">
-                                                                <rect key="frame" x="0.0" y="47.5" width="327" height="36"/>
+                                                                <rect key="frame" x="0.0" y="115" width="327" height="36"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Road Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWI-UK-2y6">
                                                                         <rect key="frame" x="0.0" y="0.0" width="327" height="17"/>
@@ -65,7 +61,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="F4T-hr-9N9">
-                                                                <rect key="frame" x="0.0" y="102.5" width="327" height="36"/>
+                                                                <rect key="frame" x="0.0" y="176" width="327" height="36"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Road Status Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEh-zp-v2t">
                                                                         <rect key="frame" x="0.0" y="0.0" width="327" height="17"/>
@@ -83,38 +79,23 @@
                                                                     </label>
                                                                 </subviews>
                                                             </stackView>
-                                                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="R4H-1F-x8C">
-                                                                <rect key="frame" x="0.0" y="157" width="327" height="45"/>
-                                                                <accessibility key="accessibilityConfiguration" identifier="Search Input"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="45" id="aHf-5E-z7j"/>
-                                                                </constraints>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                                <connections>
-                                                                    <outlet property="delegate" destination="fEk-P9-6ya" id="4Ln-lD-xrs"/>
-                                                                </connections>
-                                                            </textField>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.0" green="0.098039215690000001" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="XKm-bw-vd2" firstAttribute="top" secondItem="pId-nY-qtA" secondAttribute="top" constant="24" id="A93-hc-a7T"/>
                                                     <constraint firstItem="XKm-bw-vd2" firstAttribute="leading" secondItem="wO6-tM-RCk" secondAttribute="leading" constant="24" id="NwT-Dx-T9v"/>
                                                     <constraint firstItem="pId-nY-qtA" firstAttribute="bottom" secondItem="XKm-bw-vd2" secondAttribute="bottom" constant="24" id="gUD-TG-A0Y"/>
-                                                    <constraint firstAttribute="height" constant="250" id="sxI-cl-Ikg"/>
+                                                    <constraint firstAttribute="height" constant="260" id="sxI-cl-Ikg"/>
                                                     <constraint firstAttribute="trailing" secondItem="XKm-bw-vd2" secondAttribute="trailing" constant="24" id="u3P-aq-nDt"/>
                                                 </constraints>
                                                 <viewLayoutGuide key="safeArea" id="pId-nY-qtA"/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="tTd-PK-Ec8" appends="YES" id="wgB-c3-nQR"/>
-                                                </connections>
                                             </view>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfo-M6-V3j">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="397"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="387"/>
                                                 <color key="tintColor" red="0.0" green="0.098039215690000001" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </mapView>
                                         </subviews>
@@ -150,22 +131,15 @@
                         <viewLayoutGuide key="safeArea" id="0KA-i6-La1"/>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="LrP-MK-VYe" id="eaG-RS-prk"/>
                         <outlet property="infoView" destination="wO6-tM-RCk" id="7eD-yR-PUU"/>
                         <outlet property="mapView" destination="Wfo-M6-V3j" id="55c-IG-Hyd"/>
+                        <outlet property="picker" destination="C1s-lg-9DZ" id="cxs-xC-yQo"/>
                         <outlet property="scrollView" destination="giL-nl-7Ew" id="Srf-6Z-YSk"/>
                         <outlet property="statusSeverityDescriptionLabel" destination="5Fh-4t-5cx" id="xOx-A2-zmi"/>
                         <outlet property="statusSeverityLabel" destination="hvt-zJ-vVe" id="gce-wL-CkY"/>
-                        <outlet property="textField" destination="R4H-1F-x8C" id="voH-bA-WaJ"/>
-                        <outlet property="titleLabel" destination="Emy-zG-91T" id="Yhr-S3-Gk0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xPx-xd-0UM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="tTd-PK-Ec8">
-                    <connections>
-                        <action selector="dismissKeyboard" destination="fEk-P9-6ya" id="Zpp-5N-Tc5"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="168.80000000000001" y="71.514242878560722"/>
         </scene>

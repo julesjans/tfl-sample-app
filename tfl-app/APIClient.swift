@@ -120,11 +120,11 @@ final class APIClientMock: APIClient {
         
         let urlComponents = URLComponents(string: urlString)
         
-        let url = bundle.url(forResource: (urlComponents?.path == "road/a2" ? "Success" : "Failure"), withExtension: "json")!
+        let url = bundle.url(forResource: (urlComponents?.path == "road" ? "All" : "Failure"), withExtension: "json")!
         let data = try! Data(contentsOf: url)
         let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
         
-        if urlComponents?.path == "road/a2" {
+        if urlComponents?.path == "road" {
             let rawSuccessData = json as! [[String: Any]]
             completion(rawSuccessData.map({T(dict: $0)}).compactMap {$0}, nil)
         } else {

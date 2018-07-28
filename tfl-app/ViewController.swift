@@ -21,12 +21,10 @@ class ViewController: UIViewController {
         }
     }()
     
-    @IBOutlet var textField: UITextField!
+    @IBOutlet var picker: UIPickerView!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var infoView: UIView!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var titleLabel: UILabel!
     @IBOutlet var statusSeverityLabel: UILabel!
     @IBOutlet var statusSeverityDescriptionLabel: UILabel!
     
@@ -36,13 +34,22 @@ class ViewController: UIViewController {
         }
     }
     
+    var roads = [Road]() {
+        didSet {
+            picker.reloadAllComponents()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         scrollView.keyboardDismissMode = .onDrag
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshData), name: .UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.getData), name: .UIApplicationDidBecomeActive, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getData()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -60,10 +67,8 @@ extension ViewController {
     func configureView() {
         
         setMap(bounds: selectedRoad?.bounds, animated: true)
-        titleLabel.text = selectedRoad?.displayName ?? NSLocalizedString("TFL Coding Challenge", comment: "Default view title")
         statusSeverityLabel.text = selectedRoad?.statusSeverity ?? NSLocalizedString("No road selected", comment: "Default subtitle")
         statusSeverityDescriptionLabel.text = selectedRoad?.statusSeverityDescription ?? NSLocalizedString("No road selected", comment: "Default subtitle")
-        textField?.text = nil
         
         var infoColour: UIColor?
         
@@ -95,57 +100,44 @@ extension ViewController {
     
 }
 
-// MARK: UITextFieldDelegate
-extension ViewController: UITextFieldDelegate {
+// MARK: UIPickerView
+extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @objc func keyboardDidShow(notification: Notification) {
-        guard let userInfo = notification.userInfo, let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
-        let insets = scrollView.contentInset
-        scrollView.contentInset = UIEdgeInsetsMake(insets.top, insets.left, rect.height + 12.0, insets.right)
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
-    @objc func keyboardWillHide(notification: Notification) {
-        scrollView.contentInset = UIEdgeInsets.zero
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return roads.count
     }
     
-    @IBAction func dismissKeyboard() {
-        textField.resignFirstResponder()
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let name = roads[row].displayName
+        return NSAttributedString(string: name, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedRoad = roads[row]
     }
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        guard let text = textField.text, !text.isEmpty else {
-            return true
-        }
-        getData(query: text)
-        return true
-    }
-    
 }
 
 // MARK: Fetching data
 extension ViewController {
     
-    func getData(query: String) {
-        activityIndicator.startAnimating()
-        textField.isUserInteractionEnabled = false
-        Road.get(id: query, api: apiClient) { (roads, error) in
+    @objc func getData() {
+        picker.isUserInteractionEnabled = false
+        Road.get(id: nil, api: apiClient) { (roads, error) in
             DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-                self.textField.isUserInteractionEnabled = true
-                self.selectedRoad = roads?.first
+                self.picker.isUserInteractionEnabled = true
+                self.roads = roads ?? [Road]()
+                self.selectedRoad = roads?.filter({$0.id == self.selectedRoad?.id}).first ?? roads?.first
                 if let error = error {
                     let alert = UIAlertController(title: NSLocalizedString("Sorry", comment: "Warning message"), message: error.statusMessage, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Warning acceptance"), style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
-        }
-    }
-    
-    @objc func refreshData() {
-        if let road = selectedRoad {
-            getData(query: road.id)
         }
     }
     

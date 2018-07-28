@@ -1,0 +1,238 @@
+[
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.25616,51.5319],[-0.10234,51.6562]]",
+        "displayName": "A1",
+        "envelope": "[[-0.25616,51.5319],[-0.25616,51.6562],[-0.10234,51.6562],[-0.10234,51.5319],[-0.25616,51.5319]]",
+        "id": "a1",
+        "statusSeverity": "Good",
+        "statusSeverityDescription": "No Exceptional Delays",
+        "url": "/Road/a1"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.08703,51.52719],[-0.04999,51.68256]]",
+        "displayName": "A10",
+        "envelope": "[[-0.08703,51.52719],[-0.08703,51.68256],[-0.04999,51.68256],[-0.04999,51.52719],[-0.08703,51.52719]]",
+        "id": "a10",
+        "statusSeverity": "Good",
+        "statusSeverityDescription": "No Exceptional Delays",
+        "url": "/Road/a10"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.07183,51.51187],[0.28532,51.60844]]",
+        "displayName": "A12",
+        "envelope": "[[-0.07183,51.51187],[-0.07183,51.60844],[0.28532,51.60844],[0.28532,51.51187],[-0.07183,51.51187]]",
+        "id": "a12",
+        "statusSeverity": "Good",
+        "statusSeverityDescription": "No Exceptional Delays",
+        "url": "/Road/a12"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.07183,51.49995],[0.22918,51.53299]]",
+        "displayName": "A13",
+        "envelope": "[[-0.07183,51.49995],[-0.07183,51.53299],[0.22918,51.53299],[0.22918,51.49995],[-0.07183,51.49995]]",
+        "id": "a13",
+        "statusSeverity": "Good",
+        "statusSeverityDescription": "No Exceptional Delays",
+        "url": "/Road/a13"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.0857,51.44091],[0.17118,51.49438]]",
+        "displayName": "A2",
+        "envelope": "[[-0.0857,51.44091],[-0.0857,51.49438],[0.17118,51.49438],[0.17118,51.44091],[-0.0857,51.44091]]",
+        "id": "a2",
+        "statusSeverity": "Closure",
+        "statusSeverityDescription": "Closure",
+        "url": "/Road/a2"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.11925,51.40825],[0.14918,51.48643]]",
+        "displayName": "A20",
+        "envelope": "[[-0.11925,51.40825],[-0.11925,51.48643],[0.14918,51.48643],[0.14918,51.40825],[-0.11925,51.40825]]",
+        "id": "a20",
+        "statusSeverity": "Good",
+        "statusSeverityDescription": "No Exceptional Delays",
+        "url": "/Road/a20"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.27716,51.43917],[0.06343,51.49446]]",
+        "displayName": "South Circular (A205)",
+        "envelope": "[[-0.27716,51.43917],[-0.27716,51.49446],[0.06343,51.49446],[0.06343,51.43917],[-0.27716,51.43917]]",
+        "id": "a205",
+        "statusSeverity": "Closure",
+        "statusSeverityDescription": "Closure",
+        "url": "/Road/a205"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.0206,51.34431],[0.13667,51.46431]]",
+        "displayName": "A21",
+        "envelope": "[[-0.0206,51.34431],[-0.0206,51.46431],[0.13667,51.46431],[0.13667,51.34431],[-0.0206,51.34431]]",
+        "id": "a21",
+        "statusSeverity": "Good",
+        "statusSeverityDescription": "No Exceptional Delays",
+        "url": "/Road/a21"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.15116,51.30046],[-0.08378,51.48847]]",
+        "displayName": "A23",
+        "envelope": "[[-0.15116,51.30046],[-0.15116,51.48847],[-0.08378,51.48847],[-0.08378,51.30046],[-0.15116,51.30046]]",
+        "id": "a23",
+        "statusSeverity": "Closure",
+        "statusSeverityDescription": "Closure",
+        "url": "/Road/a23"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.23393,51.33958],[-0.10287,51.49159]]",
+        "displayName": "A24",
+        "envelope": "[[-0.23393,51.33958],[-0.23393,51.49159],[-0.10287,51.49159],[-0.10287,51.33958],[-0.23393,51.33958]]",
+        "id": "a24",
+        "statusSeverity": "Good",
+        "statusSeverityDescription": "No Exceptional Delays",
+        "url": "/Road/a24"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.32751,51.32598],[-0.12639,51.48473]]",
+        "displayName": "A3",
+        "envelope": "[[-0.32751,51.32598],[-0.32751,51.48473],[-0.12639,51.48473],[-0.12639,51.32598],[-0.32751,51.32598]]",
+        "id": "a3",
+        "statusSeverity": "Good",
+        "statusSeverityDescription": "No Exceptional Delays",
+        "url": "/Road/a3"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.40767,51.4238],[-0.25245,51.48697]]",
+        "displayName": "A316",
+        "envelope": "[[-0.40767,51.4238],[-0.40767,51.48697],[-0.25245,51.48697],[-0.25245,51.4238],[-0.40767,51.4238]]",
+        "id": "a316",
+        "statusSeverity": "Good",
+        "statusSeverityDescription": "No Exceptional Delays",
+        "url": "/Road/a316"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.50067,51.44671],[-0.15236,51.50294]]",
+        "displayName": "A4",
+        "envelope": "[[-0.50067,51.44671],[-0.50067,51.50294],[-0.15236,51.50294],[-0.15236,51.44671],[-0.50067,51.44671]]",
+        "id": "a4",
+        "statusSeverity": "Closure",
+        "statusSeverityDescription": "Closure",
+        "url": "/Road/a4"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.47478,51.51388],[-0.17014,51.55944]]",
+        "displayName": "A40",
+        "envelope": "[[-0.47478,51.51388],[-0.47478,51.55944],[-0.17014,51.55944],[-0.17014,51.51388],[-0.47478,51.51388]]",
+        "id": "a40",
+        "statusSeverity": "Good",
+        "statusSeverityDescription": "No Exceptional Delays",
+        "url": "/Road/a40"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.2937,51.46912],[0.07343,51.61635]]",
+        "displayName": "North Circular (A406)",
+        "envelope": "[[-0.2937,51.46912],[-0.2937,51.61635],[0.07343,51.61635],[0.07343,51.46912],[-0.2937,51.46912]]",
+        "id": "a406",
+        "statusSeverity": "Closure",
+        "statusSeverityDescription": "Closure",
+        "url": "/Road/a406"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.30416,51.51995],[-0.15754,51.63686]]",
+        "displayName": "A41",
+        "envelope": "[[-0.30416,51.51995],[-0.30416,51.63686],[-0.15754,51.63686],[-0.15754,51.51995],[-0.30416,51.51995]]",
+        "id": "a41",
+        "statusSeverity": "Good",
+        "statusSeverityDescription": "No Exceptional Delays",
+        "url": "/Road/a41"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.2211,51.47224],[-0.02438,51.5319]]",
+        "displayName": "Bishopsgate Cross Route",
+        "envelope": "[[-0.2211,51.47224],[-0.2211,51.5319],[-0.02438,51.5319],[-0.02438,51.47224],[-0.2211,51.47224]]",
+        "group": "Central London Red Routes",
+        "id": "bishopsgate cross route",
+        "statusSeverity": "Closure",
+        "statusSeverityDescription": "Closure",
+        "url": "/Road/bishopsgate+cross+route"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.01405,51.47478],[0.02452,51.52971]]",
+        "displayName": "Blackwall Tunnel",
+        "envelope": "[[-0.01405,51.47478],[-0.01405,51.52971],[0.02452,51.52971],[0.02452,51.47478],[-0.01405,51.47478]]",
+        "id": "blackwall tunnel",
+        "statusSeverity": "Good",
+        "statusSeverityDescription": "No Exceptional Delays",
+        "url": "/Road/blackwall+tunnel"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.2211,51.47224],[-0.02438,51.5319]]",
+        "displayName": "City Route",
+        "envelope": "[[-0.2211,51.47224],[-0.2211,51.5319],[-0.02438,51.5319],[-0.02438,51.47224],[-0.2211,51.47224]]",
+        "group": "Central London Red Routes",
+        "id": "city route",
+        "statusSeverity": "Closure",
+        "statusSeverityDescription": "Closure",
+        "url": "/Road/city+route"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.2211,51.47224],[-0.02438,51.5319]]",
+        "displayName": "Farringdon Cross Route",
+        "envelope": "[[-0.2211,51.47224],[-0.2211,51.5319],[-0.02438,51.5319],[-0.02438,51.47224],[-0.2211,51.47224]]",
+        "group": "Central London Red Routes",
+        "id": "farringdon cross route",
+        "statusSeverity": "Closure",
+        "statusSeverityDescription": "Closure",
+        "url": "/Road/farringdon+cross+route"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.2211,51.47224],[-0.02438,51.5319]]",
+        "displayName": "Inner Ring",
+        "envelope": "[[-0.2211,51.47224],[-0.2211,51.5319],[-0.02438,51.5319],[-0.02438,51.47224],[-0.2211,51.47224]]",
+        "group": "Central London Red Routes",
+        "id": "inner ring",
+        "statusSeverity": "Closure",
+        "statusSeverityDescription": "Closure",
+        "url": "/Road/inner+ring"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.2211,51.47224],[-0.02438,51.5319]]",
+        "displayName": "Southern River Route",
+        "envelope": "[[-0.2211,51.47224],[-0.2211,51.5319],[-0.02438,51.5319],[-0.02438,51.47224],[-0.2211,51.47224]]",
+        "group": "Central London Red Routes",
+        "id": "southern river route",
+        "statusSeverity": "Closure",
+        "statusSeverityDescription": "Closure",
+        "url": "/Road/southern+river+route"
+    },
+    {
+        "$type": "Tfl.Api.Presentation.Entities.RoadCorridor, Tfl.Api.Presentation.Entities",
+        "bounds": "[[-0.2211,51.47224],[-0.02438,51.5319]]",
+        "displayName": "Western Cross Route",
+        "envelope": "[[-0.2211,51.47224],[-0.2211,51.5319],[-0.02438,51.5319],[-0.02438,51.47224],[-0.2211,51.47224]]",
+        "group": "Central London Red Routes",
+        "id": "western cross route",
+        "statusSeverity": "Good",
+        "statusSeverityDescription": "No Exceptional Delays",
+        "url": "/Road/western+cross+route"
+    }
+]
