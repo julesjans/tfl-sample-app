@@ -9,10 +9,9 @@ A sample app that accesses the TFL REST API at https://api.tfl.gov.uk, and displ
 
 The app has been built in Xcode 9.3 & Swift 4.1.
 
-The  app needs to be configured with API credentials. These need to be put in the *Secret.swift* file. This method is adequate for a demo but a more robust solution could/should be used in a production app. 
-The renamed file will be ignored by git.
+The  app needs to be configured with API credentials. These need to be put in a *Secret.swift* file.
 
-1. Clone the repo and copy *Secret.swift.example*  to *Secret.swift*, open *tfl-app.xcodeproj* and ensure that *Secret.swift* is then added to the project, 
+1. Clone the repo and copy *Secret.swift.example*  to *Secret.swift* (the renamed file will be ignored by git), open *tfl-app.xcodeproj* and ensure that *Secret.swift* is  added to the project, 
 and "Target Membership" is checked for tfl-app.
 
 ```
@@ -35,9 +34,10 @@ enum APICredentials {
 ### *tfl-app/* ###
 
 * APIClient - Protocols and class for handling API requests.
-* Road - Model definition, complies with protocol for API access
-* ViewController
-* Storyboard
+* Road - **Model** definition, complies with protocol for API access.
+* Storyboard - **View** uses Autolayout for a universal iPhone/iPad app.
+* ViewController - **Controller**
+
 
 ### *tfl-app/Supporting Files* ###
 
@@ -57,28 +57,29 @@ There are two test targets, both of which can be run through the standard test m
 
 ### Assumptions ###
 
-I have assumed that:
+For the purposes of this demo, I have assumed that:
 
-* The app always has network connectivity. In production I would add handling for connection issues.
+* The app always has network connectivity.
 
-* All roads will have strings for displayName, statusSeverity, statusSeverityDescription & bounds. If either displayName, statusSeverity, statusSeverityDescription
-are missing the Road object will not be created.
-
+* All roads will have strings for displayName, statusSeverity, statusSeverityDescription & bounds. If either displayName, 
+statusSeverity, statusSeverityDescription are missing the Road object will not be created.
+ 
 * When a road id is requested, successful reponses from the API are always in the form of a single item array.
 
 * All urls are valid when lowercase and percent-encoded.
 
 ### Severity Levels ###
 
-I have taken severity levels from: https://api.tfl.gov.uk/Road/Meta/Severities, which I have then mapped to a colour scale.
+I have taken severity levels from: https://api.tfl.gov.uk/Road/Meta/Severities, 
+which I have then mapped to colours from: http://content.tfl.gov.uk/tfl-colour-standards-issue04.pdf.
 
 ### Coordinates ###
 
-The coordinates returned by the API are in the format [Lng, Lat] and therefore the bounds are in the format [West, South, East, North]. 
-I have transposed them to [Lat, Lng] to create bounds of  [NorthWest, SouthEast].
+To create the map I have used the bounds attribute on the road. The coordinates returned by the API are in the format [Lng, Lat] and 
+therefore the bounds are in the format [West, South, East, North]. I have transposed them to [Lat, Lng] to create bounds of  [NorthWest, SouthEast].
 
 The "envelope" attribute contains [Lng, Lat] coordinates plotting a closed path of the bounds with all four corners of the rectangle. 
-Provided this remains a rectangle this is redundant and can be inferred from the bounds attribute.
+I have assumed that this is consistent across all roads, and remains a rectangle, so this can be inferred from the bounds attribute.
 
 
 ## Valid roads & alternative version ##

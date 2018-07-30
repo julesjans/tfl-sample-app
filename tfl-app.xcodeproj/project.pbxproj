@@ -15,7 +15,6 @@
 		848DB072210A487D00D10A53 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB071210A487D00D10A53 /* UnitTests.swift */; };
 		848DB08C210A495D00D10A53 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB08B210A495D00D10A53 /* Secret.swift */; };
 		848DB090210A4BFE00D10A53 /* Secret.swift.example in Resources */ = {isa = PBXBuildFile; fileRef = 848DB08F210A4BFD00D10A53 /* Secret.swift.example */; };
-		848DB092210A4F2600D10A53 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 848DB091210A4F2600D10A53 /* README.md */; };
 		848DB097210A57D600D10A53 /* Road.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB096210A57D600D10A53 /* Road.swift */; };
 		848DB09A210A5BAB00D10A53 /* Success.json in Resources */ = {isa = PBXBuildFile; fileRef = 848DB099210A5BAB00D10A53 /* Success.json */; };
 		848DB09C210A6D3B00D10A53 /* Failure.json in Resources */ = {isa = PBXBuildFile; fileRef = 848DB09B210A6D3B00D10A53 /* Failure.json */; };
@@ -274,7 +273,6 @@
 				848DB067210A487D00D10A53 /* LaunchScreen.storyboard in Resources */,
 				84B7ACE0210C462600B954B0 /* Success.json in Resources */,
 				848DB064210A487D00D10A53 /* Assets.xcassets in Resources */,
-				848DB092210A4F2600D10A53 /* README.md in Resources */,
 				84B7ACE1210C462900B954B0 /* Failure.json in Resources */,
 				848DB062210A487C00D10A53 /* Main.storyboard in Resources */,
 				848DB090210A4BFE00D10A53 /* Secret.swift.example in Resources */,
