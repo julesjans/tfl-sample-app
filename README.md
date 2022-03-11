@@ -3,7 +3,7 @@
 
 A sample app that accesses the TFL REST API at https://api.tfl.gov.uk, and displays statuses for major London roads.
 
-![tfl-app](http://bucket-uk.julesjans.com.s3.amazonaws.com/Misc/Images/tfl-app.gif)
+![tfl-app](https://user-images.githubusercontent.com/57953/157981998-59517917-d6e8-4ca2-9d0b-9150bd089d8f.gif)
 
 ##  Configuration & build ##
 
@@ -88,4 +88,4 @@ Using the endpoint: https://api.tfl.gov.uk/road, I have made a feature branch â€
 that replaces the text input field with a picker, requesting all the information in one call when the view loads. Using this method ensures that the user
 cannot enter an invalid road. Tests have been updated on this branch to reflect the changes.
 
-![tfl-app-picker](http://bucket-uk.julesjans.com.s3.amazonaws.com/Misc/Images/tfl-app-picker.gif)
+![tfl-app-picker](https://user-images.githubusercontent.com/57953/157982132-454c7173-7cc6-4725-9094-2ac4798ae2fe.gif)
